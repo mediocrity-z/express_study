@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="get">发送get请求</button>
+    <button id="post">发送post请求</button>
+    <button id='delete'>删除数据</button>
+    <button id="jsonp">发送jsonp请求</button>
+    
+    <script src="https://cdn.staticfile.org/axios/0.1.0/axios.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.0/jquery.min.js"></script>
+    <script>
+        let get=document.getElementById('get'),post=document.getElementById('post'),del=document.getElementById('delete'),
+        jsonp=document.getElementById('jsonp')
+     get.addEventListener('click',async function(){
+         axios.get('http://127.0.0.1:8501/api/get?name="ouli"&age=20').then(function(res){console.log(res)}).catch(function(err){console.log(err);})
+     })
+     post.addEventListener('click',async function(){
+         axios.post('http://127.0.0.1:8501/api/post',{name:'欧力',age:20}).then(function(res){console.log(res)}).catch(function(err){console.log(err);})
+     })
+     del.addEventListener('click',async function(){
+         axios.delete('http://127.0.0.1:8501/api/delete').then(function(res){console.log(res);}).catch(function(err){console.log(err);})
+     })
+     jsonp.addEventListener('click',function(){
+         $.ajax({
+             method:'GET',
+             url:'127.0.0.1:8501/api/jsonp',
+             dataType:'jsonp',
+             success:function(res){
+                 console.log(res);
+             }
+         })
+     })
+    </script>
+</body>
+</html>

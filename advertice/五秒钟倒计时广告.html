@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            position: relative;
+        }
+        button{
+            position: absolute;
+            margin-left: -90px;
+            width: 90px;
+            height: 45px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="http://img.sccnn.com/bimg/337/31830.jpg" alt="">
+        <button>跳过</button>
+    </div>
+</body>
+</html>
+<script>
+    //setInterval（) 方法可按照指定的周期（以毫秒计）来执行回调函数或计算表达式
+    //settimeout方法则是规定时间之后执行回调函数
+    var btn=document.querySelector('button');
+    var img=document.getElementsByTagName('img')[0];
+    var timer=5;
+    btn.onclick=function(){
+        img.style.display='none';
+        btn.style.display='none';
+    };
+    setInterval(function(){
+        if(timer==0){
+            img.style.display='none';
+        btn.style.display='none';
+        }
+        else{
+        btn.innerHTML='倒计时'+timer+'秒';
+        timer--;}
+        },1000)
+    // setTimeout(function(){
+    //     img.style.display='none';
+    //     btn.style.display='none';
+    // },3000)
+</script>
